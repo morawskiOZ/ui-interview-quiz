@@ -1,19 +1,19 @@
-import { CacheProvider, EmotionCache } from '@emotion/react'
-import emotionReset from 'emotion-reset'
-import { Global, css } from '@emotion/react'
+import { CacheProvider, css, EmotionCache, Global } from '@emotion/react'
+import { CssBaseline } from '@mui/material'
 import { ThemeProvider } from '@mui/material/styles'
 import {
   Hydrate,
   QueryCache,
   QueryClient,
   QueryClientProvider,
+  useQueryErrorResetBoundary,
 } from '@tanstack/react-query'
+import emotionReset from 'emotion-reset'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import * as React from 'react'
 import createEmotionCache from '../src/createEmotionCache'
 import theme from '../src/theme'
-import { useQueryErrorResetBoundary } from '@tanstack/react-query'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
@@ -60,13 +60,14 @@ export default function MyApp(props: MyAppProps) {
           }
         `}
       />
-      <ThemeProvider theme={theme}>
-        <QueryClientProvider client={queryClient}>
-          <Hydrate state={pageProps.dehydratedState}>
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
             <Component {...pageProps} />
-          </Hydrate>
-        </QueryClientProvider>
-      </ThemeProvider>
+          </ThemeProvider>
+        </Hydrate>
+      </QueryClientProvider>
     </CacheProvider>
   )
 }

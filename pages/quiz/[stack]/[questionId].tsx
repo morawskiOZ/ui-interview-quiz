@@ -1,13 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import { Box } from '@mui/material'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
+import { AnswerCard } from '../../../src/components/Cards/AnswerCard'
+import { EditorCard } from '../../../src/components/Cards/EditorCard'
+import { QuestionCard } from '../../../src/components/Cards/QuestionCard'
 
 const Question = () => {
+  const [showAnswer, setShowAnswer] = useState(false)
   const { query } = useRouter()
   console.log(query, 'query')
 
   return (
     <>
-      <div>question nr {query?.questionId}</div>
+      <Box>question nr {query?.questionId}</Box>
+      <QuestionCard
+        showAnswer={showAnswer}
+        question="What is the difference between a class and a function component?"
+        onShowAnswer={setShowAnswer}
+      />
+      {showAnswer && <AnswerCard question="Class components are worse" />}
+      <EditorCard />
     </>
   )
 }

@@ -18,9 +18,11 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.2",
     "@tanstack/react-query": "^4.0.10",
+    "@uiw/react-md-editor": "^3.17.2",
     "axios": "^0.27.2",
     "emotion-reset": "^3.0.1",
     "next": "12.2.3",
+    "next-remove-imports": "^1.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },

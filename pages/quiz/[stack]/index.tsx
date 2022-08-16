@@ -3,7 +3,8 @@ import { useRouter } from 'next/router'
 
 const Stack = () => {
   const { query, pathname, push } = useRouter()
-  const stack = query?.stack
+  const defaultStack = 'frontend'
+  const stack = query?.stack || defaultStack
 
   useEffect(() => {
     push({
