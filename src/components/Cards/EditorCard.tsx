@@ -25,12 +25,12 @@ const Markdown = dynamic<any>(
 
 export const EditorCard = () => {
   const [value, setValue] = React.useState<string | undefined>(
-    '**Use this markdown editor as notepad!!!**'
+    " <!--- Just for notes, we won't check it against the question. It has Markdown support. --->"
   )
   return (
     <Card>
       <CardContent>
-        <MDEditor value={value} onChange={setValue} />
+        <MDEditor value={value} onChange={setValue} height={140} />
       </CardContent>
     </Card>
   )

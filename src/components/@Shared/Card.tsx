@@ -15,7 +15,5 @@ export const Card = ({ children, ...rest }: CardProps) => {
     ...restProps,
   }
 
-  console.log(cardProps, 'cardProps')
-
   return <MuiCard {...cardProps}>{children}</MuiCard>
 }

@@ -8,11 +8,9 @@ import { QuestionCard } from '../../../src/components/Cards/QuestionCard'
 const Question = () => {
   const [showAnswer, setShowAnswer] = useState(false)
   const { query } = useRouter()
-  console.log(query, 'query')
 
   return (
     <>
-      <Box>question nr {query?.questionId}</Box>
       <QuestionCard
         showAnswer={showAnswer}
         question="What is the difference between a class and a function component?"

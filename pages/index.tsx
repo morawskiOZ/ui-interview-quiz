@@ -6,8 +6,9 @@ import * as React from 'react'
 import Link from '../src/components/Link'
 import Names from '../src/components/Names'
 import Pokemons from '../src/components/Pokemons'
+import { NextPageWithLayout } from './types'
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
   return (
     <Container maxWidth="lg">
       <Box

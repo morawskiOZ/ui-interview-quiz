@@ -5,6 +5,7 @@
     "clsx",
     "mdeditor",
     "nextjs",
-    "Pokemons"
+    "Pokemons",
+    "tanstack"
   ]
 }

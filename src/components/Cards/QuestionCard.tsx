@@ -19,20 +19,20 @@ export const QuestionCard = ({ question, showAnswer, onShowAnswer }: Props) => {
       <CardActions
         sx={{ display: 'flex', justifyContent: 'center', mt: 1, mb: 2, gap: 2 }}
       >
-        <Button size="small" color="warning" variant="contained">
-          Previous question
+        <Button size="small" color="primary" variant="outlined">
+          Prev
         </Button>
 
         <Button
           size="small"
           color="primary"
-          variant="outlined"
+          variant="contained"
           onClick={() => onShowAnswer((s: boolean) => !s)}
         >
           {showAnswer ? 'Hide' : 'Show'} answer
         </Button>
-        <Button size="small" color="success" variant="contained">
-          Next question
+        <Button size="small" color="secondary" variant="outlined">
+          Next
         </Button>
       </CardActions>
     </Card>

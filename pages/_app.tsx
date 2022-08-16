@@ -12,8 +12,10 @@ import emotionReset from 'emotion-reset'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import * as React from 'react'
+import { DefaultLayout } from '../src/components/@Shared/DefaultLayout'
 import createEmotionCache from '../src/createEmotionCache'
 import theme from '../src/theme'
+import { AppPropsWithLayout } from './types'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache()
@@ -22,9 +24,12 @@ interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache
 }
 
-export default function MyApp(props: MyAppProps) {
+export default function MyApp(props: AppPropsWithLayout) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
   const { reset } = useQueryErrorResetBoundary()
+  const getLayout =
+    Component.getLayout ?? ((page) => <DefaultLayout>{page}</DefaultLayout>)
+
   const [queryClient] = React.useState(
     () =>
       new QueryClient({
@@ -64,7 +69,7 @@ export default function MyApp(props: MyAppProps) {
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Component {...pageProps} />
+            {getLayout(<Component {...pageProps} />)}
           </ThemeProvider>
         </Hydrate>
       </QueryClientProvider>
